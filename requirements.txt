@@ -1,0 +1,5 @@
+torch
+torchaudio
+pyannote.audio==3.3.2
+pydub==0.25.1
+customtkinter==5.2.2
