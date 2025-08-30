@@ -139,8 +139,9 @@ class App(ctk.CTk):
         thread.start()
 
     def _run_process_thread(self, audio, outdir, num, mn, mx, min_duration, hf_token):
+        success = False
         try:
-            self.after(0, lambda: self.status_label.configure(text="Status: Diarizing audio... (this may take a while)"))
+            self.after(0, lambda: self.status_label.configure(text="Status: Authenticating & loading model..."))
             
             rttm_file = run_diarization(audio, outdir, num_speakers=num, min_speakers=mn, max_speakers=mx, hf_token=hf_token)
 
@@ -156,13 +157,17 @@ class App(ctk.CTk):
             final_message = f"Process Complete!\n\nSaved {total_saved} audio segments to:\n{outdir}"
             self.after(0, lambda: self.status_label.configure(text=f"Success! Saved {total_saved} segments."))
             self.after(0, lambda: messagebox.showinfo("Done", final_message))
+            success = True 
         
         except Exception as e:
             import traceback
             traceback.print_exc()
             self.after(0, lambda: messagebox.showerror("Error", str(e)))
-            self.after(0, lambda: self.status_label.configure(text="Status: Error"))
         
         finally:
             self.after(0, lambda: self.start_btn.configure(state="normal", text="Split Audio"))
-            self.after(0, lambda: self.status_label.configure(text="Status: Idle"))
+            
+            if success:
+                self.after(0, lambda: self.status_label.configure(text="Status: Idle"))
+            else:
+                self.after(0, lambda: self.status_label.configure(text="Status: Error. Please check token or console for details."))
