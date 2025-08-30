@@ -19,9 +19,3 @@ COLORS = {
     'text_primary': '#E6EEF6',
     'text_secondary': '#A9B3C6'
 }
-
-# --- Fonts ---
-#FONTS = {
-#     'main': ('Roboto', 14),
-#     'title': ('Roboto', 18, 'bold')
-# }

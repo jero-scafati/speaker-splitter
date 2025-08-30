@@ -14,7 +14,7 @@ class App(ctk.CTk):
         self.geometry(f'{APP_SIZE[0]}x{APP_SIZE[1]}')
         self.resizable(False, False)
 
-        # --- Variables de estado ---
+        # --- State Variables---
         self.audio_path_var = ctk.StringVar()
         self.output_dir_var = ctk.StringVar()
         self.num_speakers_var = ctk.StringVar()
@@ -25,7 +25,7 @@ class App(ctk.CTk):
         
         validate_cmd = self.register(self._validate_numeric_input)
 
-        # --- UI principal ---
+        # --- Main UI ---
         self.main_container = ctk.CTkFrame(self, fg_color="transparent")
         self.main_container.pack(expand=True, fill="both", padx=20, pady=20)
         

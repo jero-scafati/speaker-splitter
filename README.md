@@ -62,7 +62,7 @@ It is highly recommended to run this project in a virtual environment.
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/jero-scafati/speaker-splitter.git
     cd speaker-splitter
     ```
 
@@ -84,7 +84,7 @@ It is highly recommended to run this project in a virtual environment.
 With your virtual environment activated, simply run the `main.py` script:
 
 ```bash
-python main.py
+python scripts/main.py
 ```
 
 ## How to Use the Application
